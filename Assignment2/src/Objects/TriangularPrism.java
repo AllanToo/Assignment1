@@ -1,7 +1,7 @@
 package Objects;
 /*
  * represents triangle prisms
- * @author Allen To, Paul Holck, Justin Gil, Xyrille Tugade
+ * @author Allan To, Paul Holck, Justin Gil, Xyrille Tugade
  * */
 public class TriangularPrism extends Shape {
 	// Attributes 
