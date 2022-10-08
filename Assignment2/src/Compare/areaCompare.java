@@ -9,7 +9,7 @@ import Objects.Shape;
 
 public class areaCompare implements Comparator<Shape> {
 
-	/*
+	/**
 	 * compares two shapes by its base area.
 	 * 
 	 * @param s1 -first shape to be compared
@@ -30,4 +30,5 @@ public class areaCompare implements Comparator<Shape> {
 		else
 			return 0;
 	}
+
 }
