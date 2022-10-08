@@ -1,9 +1,14 @@
 package utilities;
 import java.util.Comparator;
 
-import Objects.Shape;
+
 public final class Sorting {
-     // bubble sort
+     
+	
+	/* This bubble sort method is used to sort the Shape Array 
+	 * Can used to compare based on the volume and base area
+	 * @param <T> array 
+	 */
 	public static <T> void bubbleSort(Comparable<T> [] array, Comparator<? super T> compare)
 	{
 		boolean sorted = false;
@@ -26,7 +31,11 @@ public final class Sorting {
 		}
 	}
 	
-	// bubble sort based on height
+	
+	/* This bubble sort method is used to sort the Shape Array 
+	 * Can used to compare based on the volume and base area
+	 * @param <T> array 
+	 */
 	public static <T> void bubbleSortHeight(Comparable<T>[] array)
 	{
 		boolean sorted = false;
@@ -47,12 +56,14 @@ public final class Sorting {
 			}
 		}
 	}
+	
 	/*
 	 * Method to sort shapeArray in insertion sort algorithm.
-	 * This version of insertionSort() can sort the shape array with height.
+	 * This version of insertionSort() can sort the shape array with height
 	 * @param <T> array
 	 * 
 	 */
+	
 	public static <T> void insertionSort(Comparable<T> [] array) {
 
 		for (int i = 1; i < array.length; i++) {
@@ -66,6 +77,7 @@ public final class Sorting {
 			array[j + 1] = key;
 			}
 	}
+
 	/*
 	 * Method to sort shapeArray in insertion sort algorithm.
 	 * This version of insertionSort() can sort the shape array with area or volume.
@@ -86,90 +98,97 @@ public final class Sorting {
 			}
 	}
 	
-	
-	// merge sort to compare height
+	/*
+	 * Merge sort algorithm to sort shapeArray 
+	 * Sort the shape array by height
+	 * @param <T> array
+	 * 
+	 */
 	
 	
 	 
-	 public static Comparable[] mergeSortHeight(Comparable[] list) 
+	 public static Comparable[] mergeSortHeight(Comparable[] array) 
 	  {
 	    //If list is empty; no need to do anything
-	        if (list.length <= 1) {
-	            return list;
+	        if (array.length <= 1) {
+	            return array;
 	        }
 	         
 	        //Split the array in half in two parts
-	        Comparable[] first = new Comparable[list.length / 2];
-	        Comparable[] second = new Comparable[list.length - first.length];
-	        System.arraycopy(list, 0, first, 0, first.length);
-	        System.arraycopy(list, first.length, second, 0, second.length);
+	        Comparable[] first = new Comparable[array.length / 2];
+	        
+	        Comparable[] second = new Comparable[array.length - first.length];
+	        
+	        System.arraycopy(array, 0, first, 0, first.length);
+	        
+	        System.arraycopy(array, first.length, second, 0, second.length);
+	        
 	         
 	        //Sort each half recursively
 	        mergeSortHeight(first);
 	        mergeSortHeight(second);
 	         
 	        //Merge both halves together, overwriting to original array
-	        merge(first, second, list);
-	        return list;
+	        merge(first, second, array);
+	        return array;
 	    }
 	     
 	  @SuppressWarnings({ "rawtypes", "unchecked" }) 
 	    private static void merge(Comparable[] first, Comparable[] second, Comparable[] result) 
 	  {
-	        //Index Position in first array - starting with first element
-	        int iFirst = 0;
+	        int firstofFirstArray = 0;
+	        int firstofSecondArray = 0; 
+	        int Merge = 0;
 	         
-	        //Index Position in second array - starting with first element
-	        int iSecond = 0;
-	         
-	        //Index Position in merged array - starting with first position
-	        int iMerged = 0;
-	         
-	        //Compare elements at iFirst and iSecond, 
-	        //and move smaller element at iMerged
-	        while (iFirst < first.length && iSecond < second.length) 
+	     
+	        while (firstofFirstArray < first.length && firstofSecondArray < second.length) 
 	        {
-	            if (first[iFirst].compareTo(second[iSecond]) < 0) 
+	            if (first[firstofFirstArray].compareTo(second[firstofSecondArray]) < 0) 
 	            {
-	                result[iMerged] = second[iSecond];
-	                iSecond++;
+	                result[Merge] = second[firstofSecondArray];
+	                firstofSecondArray++;
 	            } 
 	            else
 	            {
-	                result[iMerged] = first[iFirst];
-	                iFirst++;
+	                result[Merge] = first[firstofFirstArray];
+	                firstofFirstArray++;
 	            }
-	            iMerged++;
+	            Merge++;
 	        }
-	        //copy remaining elements from both halves - each half will have already sorted elements
-	        System.arraycopy(first, iFirst, result, iMerged, first.length - iFirst);
-	        System.arraycopy(second, iSecond, result, iMerged, second.length - iSecond);
+	        
+	        System.arraycopy(first, firstofFirstArray, result, Merge, first.length - firstofFirstArray);
+	        System.arraycopy(second, firstofSecondArray, result, Merge, second.length - firstofSecondArray);
 	    }
 	  
 	  
-	  
+	  /*
+		 * Merge sort algorithm to sort shapeArray 
+		 * Sort the shape array by volume and base area
+		 * @param <T> array
+		 * @param comparee
+		 */
 	  
 	  @SuppressWarnings("unchecked")
-	public static <T> Comparable[] mergeSort(Comparable<T>[] list, Comparator< T> comparee) 
+	public static <T> Comparable[] mergeSort(Comparable<T>[] array, Comparator< T> comparee) 
 	  {
-	    //If list is empty; no need to do anything
-	        if (list.length <= 1) {
-	            return list;
+	   
+	        if (array.length <= 1) {
+	            return array;
 	        }
 	         
-	        //Split the array in half in two parts
-	        Comparable[] first = new Comparable[list.length / 2];
-	        Comparable[] second = new Comparable[list.length - first.length];
-	        System.arraycopy(list, 0, first, 0, first.length);
-	        System.arraycopy(list, first.length, second, 0, second.length);
+	      
+	        Comparable[] first = new Comparable[array.length / 2];
+	        Comparable[] second = new Comparable[array.length - first.length];
+	        System.arraycopy(array, 0, first, 0, first.length);
+	        System.arraycopy(array, first.length, second, 0, second.length);
 	         
-	        //Sort each half recursively
+	       
 	        mergeSort(first, comparee);
 	        mergeSort(second, comparee);
 	         
-	        //Merge both halves together, overwriting to original array
-	        merge2(first, second, list, comparee);
-	        return list;
+	       
+	        merge2(first, second, array, comparee);
+	        return array;
 	    }
 
 	  
@@ -178,80 +197,130 @@ public final class Sorting {
 	@SuppressWarnings({ "rawtypes", "unchecked" }) 
 	    private static <T> void  merge2(Comparable [] first, Comparable [] second, Comparable [] result, Comparator< T> compare) 
 	  {
-	        //Index Position in first array - starting with first element
-	        int iFirst = 0;
+	      
+	        int firstofFirstArray = 0;
 	   
+	        int firstofSecondArray = 0;
 	         
-	        //Index Position in second array - starting with first element
-	        int iSecond = 0;
+            int Merge = 0;
 	         
-	        //Index Position in merged array - starting with first position
-	        int iMerged = 0;
-	         
-	        //Compare elements at iFirst and iSecond, 
-	        //and move smaller element at iMerged
+	    
 	       
 	      do {
 	        
-	            if ( compare.compare(  (T) first[iFirst],  (T) second[iSecond]) < 0) // compare.compare( (T) array[i], (T) array[i+1] ) < 0
+	            if ( compare.compare(  (T) first[firstofFirstArray],  (T) second[firstofSecondArray]) < 0) 
 	            {
-	                result[iMerged] = second[iSecond];
-	                iSecond++;
+	                result[Merge] = second[firstofSecondArray];
+	                firstofSecondArray++;
 	            } 
 	            else
 	            {
-	                result[iMerged] = first[iFirst];
-	                iFirst++;
+	                result[Merge] = first[firstofFirstArray];
+	                firstofFirstArray++;
 	            }
-	            iMerged++;
-	      } while (iFirst < first.length && iSecond < second.length);
+	            Merge++;
+	      } while (firstofFirstArray < first.length && firstofSecondArray < second.length);
 	        
-	        //copy remaining elements from both halves - each half will have already sorted elements
-	        System.arraycopy(first, iFirst, result, iMerged, first.length - iFirst);
-	        System.arraycopy(second, iSecond, result, iMerged, second.length - iSecond);
+	      
+	        System.arraycopy(first, firstofFirstArray, result, Merge, first.length - firstofFirstArray);
+	        System.arraycopy(second, firstofSecondArray, result, Merge, second.length - firstofSecondArray);
 	    }
 	
 
   
    
+	/*
+	 * Selection sort algorithm to sort shapeArray 
+	 * Sort the shape array by height
+	 * @param <T> array
+	 * 
+	 */
    
-   
-   public static void selectionSortHeight(Comparable[] a) { 
+   public static void selectionSortHeight(Comparable[] array) { 
 	   
-	    int N = a.length;
+	    int k = array.length;
 	   
-	    for (int i = 0; i < N; i++) { 
+	    for (int i = 0; i < k; i++) { 
 	 
 	        int maxIndex = i;
-	        for (int j = i + 1; j < N; j++)
-	        if ( a[j].compareTo(a[maxIndex]) > 0 )
+	        for (int j = i + 1; j < k; j++)
+	        if ( array[j].compareTo(array) > 0 )
 	             maxIndex = j;
 	 
 	        if (maxIndex != i) {
-	            Comparable temp = a[i];
-	            a[i] = a[maxIndex];
-	            a[maxIndex] = temp;
+	            Comparable temp = array[i];
+	            array[i] = array[maxIndex];
+	            array[maxIndex] = temp;
 	        }
 	    }
 }
-   public static <T> void selectionSort(Comparable[] a , Comparator<T> comparee) { 
+   /*
+	 * Selection sort algorithm to sort shapeArray 
+	 * Sort the shape array by volume and base area
+	 * @param <T> array
+	 * 
+	 */
+  
+   
+   public static <T> void selectionSort(Comparable[] array , Comparator<T> comparee) { 
 	   
-	    int N = a.length;
+	    int k = array.length;
 	    
-	    for (int i = 0; i < N; i++) { 
+	    for (int i = 0; i < k; i++) { 
 	    	 int maxIndex = i;
 	        
-	        for (int j = i + 1; j < N; j++)
-	        if ( comparee.compare(  (T) a[j],  (T) a[maxIndex]) > 0 )
+	        for (int j = i + 1; j < k; j++)
+	        if ( comparee.compare(  (T) array[j],  (T) array[maxIndex]) > 0 )
 	             maxIndex = j;
 	 
 	        if (maxIndex != i) {
-	            Comparable temp = a[i];
-	            a[i] = a[maxIndex];
-	            a[maxIndex] = temp;
+	            Comparable temp = array[i];
+	            array[i] = array[maxIndex];
+	            array[maxIndex] = temp;
 	        }
 	    }
 }
    
 }
+
+
+
+	
+
+
+
+
+
+
+
+
+  
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	  
+  
+      
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
