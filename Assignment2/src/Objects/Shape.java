@@ -3,7 +3,7 @@ package Objects;
  * Superclass of the shapes. It will allow subclasses of the Shape class
  * to inherit the methods, abstract methods and local variables
  * It will also allow the subclasses to compare each other by height.
- * @authors  @author Allen To, Paul Holck, Justin Gil, Xyrille Tugade
+ * @authors  @author Allan To, Paul Holck, Justin Gil, Xyrille Tugade
  */
 public abstract class Shape implements Comparable<Shape> {
 	// Attributes
